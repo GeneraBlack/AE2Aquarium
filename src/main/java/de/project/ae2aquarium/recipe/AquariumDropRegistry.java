@@ -34,6 +34,7 @@ public class AquariumDropRegistry {
     public static final TagKey<Item> CORALS_TAG = TagKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("corals"));
 
     private static final Map<Item, List<AquariumDropEntry>> BUILTIN_DROPS = new LinkedHashMap<>();
+    private static final Map<Item, Integer> BUILTIN_MIN_VOLUMES = new LinkedHashMap<>();
     private static final Map<Item, List<AquariumDropEntry>> DYNAMIC_CACHE = new LinkedHashMap<>();
     private static final Map<Item, AquariumDropRecipe> RECIPE_CACHE = new LinkedHashMap<>();
 
@@ -219,12 +220,56 @@ public class AquariumDropRegistry {
                 new AquariumDropEntry(new ItemStack(Items.TURTLE_SCUTE), 70, 1, 1),
                 new AquariumDropEntry(new ItemStack(Items.SEAGRASS), 30, 1, 2)
         ));
+
+        // Glow Lichen, Prismarine & Dark Prismarine
+        addBuiltin(Items.GLOW_LICHEN, List.of(
+                new AquariumDropEntry(new ItemStack(Items.GLOW_LICHEN), 80, 1, 2),
+                new AquariumDropEntry(new ItemStack(Items.GLOW_INK_SAC), 20, 1, 1)
+        ));
+        addBuiltin(Items.PRISMARINE, List.of(
+                new AquariumDropEntry(new ItemStack(Items.PRISMARINE), 65, 1, 2),
+                new AquariumDropEntry(new ItemStack(Items.PRISMARINE_SHARD), 35, 1, 2)
+        ));
+        addBuiltin(Items.DARK_PRISMARINE, List.of(
+                new AquariumDropEntry(new ItemStack(Items.DARK_PRISMARINE), 60, 1, 1),
+                new AquariumDropEntry(new ItemStack(Items.PRISMARINE_SHARD), 25, 1, 2),
+                new AquariumDropEntry(new ItemStack(Items.INK_SAC), 15, 1, 1)
+        ));
+
+        // Heart of the Sea (Requires minimum inner tank volume >= 27 m^3, e.g., outer 5x5x5)
+        addBuiltin(Items.HEART_OF_THE_SEA, 27, List.of(
+                new AquariumDropEntry(new ItemStack(Items.NAUTILUS_SHELL), 40, 1, 1),
+                new AquariumDropEntry(new ItemStack(Items.PRISMARINE_CRYSTALS), 35, 1, 2),
+                new AquariumDropEntry(new ItemStack(Items.PRISMARINE_SHARD), 20, 1, 2),
+                new AquariumDropEntry(new ItemStack(Items.DIAMOND), 4, 1, 1),
+                new AquariumDropEntry(new ItemStack(Items.HEART_OF_THE_SEA), 1, 1, 1)
+        ));
     }
 
     private static void addBuiltin(Item specimen, List<AquariumDropEntry> entries) {
+        addBuiltin(specimen, 1, entries);
+    }
+
+    private static void addBuiltin(Item specimen, int minVolume, List<AquariumDropEntry> entries) {
         if (specimen != null && specimen != Items.AIR) {
             BUILTIN_DROPS.put(specimen, entries);
+            BUILTIN_MIN_VOLUMES.put(specimen, Math.max(1, minVolume));
         }
+    }
+
+    public static int getRequiredMinVolume(Item specimen, @Nullable Level level) {
+        if (specimen == null || specimen == Items.AIR) {
+            return 1;
+        }
+        ensureInitialized();
+        if (level != null && RECIPE_CACHE.isEmpty()) {
+            refreshRecipeCache(level.getRecipeManager());
+        }
+        AquariumDropRecipe recipe = RECIPE_CACHE.get(specimen);
+        if (recipe != null) {
+            return Math.max(1, recipe.minVolume());
+        }
+        return BUILTIN_MIN_VOLUMES.getOrDefault(specimen, 1);
     }
 
     public static boolean isValidSpecimen(Item item, @Nullable Level level) {
@@ -287,7 +332,11 @@ public class AquariumDropRegistry {
 
         List<AquariumDropEntry> builtin = BUILTIN_DROPS.get(specimen);
         if (builtin != null) {
-            return builtin;
+            int minVol = BUILTIN_MIN_VOLUMES.getOrDefault(specimen, 1);
+            if (innerVolume >= minVol) {
+                return builtin;
+            }
+            return Collections.emptyList();
         }
 
         if ( isDynamicMarineSpecimen(specimen)) {
