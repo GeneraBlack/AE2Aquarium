@@ -77,7 +77,7 @@ jobs:
           name: "AE2 Aquarium ${{ steps.version_info.outputs.tag }}"
           version: ${{ steps.version_info.outputs.tag }}
           version-type: ${{ inputs.version_type || 'release' }}
-          changelog: ${{ inputs.changelog || 'Initial release of AE2 Aquarium v1.0.0 for Minecraft 1.21.1 (NeoForge): Scalable 3D Multiblock Reef Aquarium (3x3x3 up to 16x8x16), animated 3D coral colonies & tropical fish, dedicated internal ME Storage Cell slot via IStorageProvider, GParted-style habitat partition bar, and full coral/marine cultivation.' }}
+          changelog: "${{ inputs.changelog || 'Initial release of AE2 Aquarium v1.0.0 for Minecraft 1.21.1 (NeoForge) - Scalable 3D Multiblock Reef Aquarium (3x3x3 up to 16x8x16), animated 3D coral colonies and tropical fish, dedicated internal ME Storage Cell slot via IStorageProvider, GParted-style habitat partition bar, and full coral/marine cultivation.' }}"
 
           # Compatibility matrix
           game-versions: |
