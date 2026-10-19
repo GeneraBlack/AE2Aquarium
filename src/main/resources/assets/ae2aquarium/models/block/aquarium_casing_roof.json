@@ -1,0 +1,22 @@
+{
+  "textures": {
+    "particle": "ae2aquarium:block/aquarium_casing",
+    "top": "ae2aquarium:block/aquarium_casing",
+    "bottom": "ae2aquarium:block/aquarium_controller_top",
+    "side": "ae2aquarium:block/aquarium_controller_side"
+  },
+  "elements": [
+    {
+      "from": [0, 13, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "down":  { "uv": [0, 0, 16, 16], "texture": "#bottom" },
+        "up":    { "uv": [0, 0, 16, 16], "texture": "#top" },
+        "north": { "uv": [0, 0, 16, 3], "texture": "#side" },
+        "south": { "uv": [0, 0, 16, 3], "texture": "#side" },
+        "west":  { "uv": [0, 0, 16, 3], "texture": "#side" },
+        "east":  { "uv": [0, 0, 16, 3], "texture": "#side" }
+      }
+    }
+  ]
+}

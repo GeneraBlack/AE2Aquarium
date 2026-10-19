@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "ae2aquarium:aquarium_casing"
+    },
+    "E": {
+      "item": "ae2:engineering_processor"
+    },
+    "F": {
+      "item": "ae2:fluix_crystal"
+    },
+    "H": {
+      "item": "minecraft:prismarine_crystals"
+    }
+  },
+  "pattern": [
+    "CHC",
+    "FEF",
+    "CHC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ae2aquarium:aquarium_controller"
+  }
+}

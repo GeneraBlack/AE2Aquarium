@@ -1,0 +1,8 @@
+{
+  "itemGroup.ae2aquarium": "AE2 Aquarium",
+  "block.ae2aquarium.aquarium_controller": "ME Aquarium-Controller",
+  "block.ae2aquarium.aquarium_casing": "Aquarium-Rahmengehäuse",
+  "block.ae2aquarium.aquarium_glass": "Aquarium-Panzerglas",
+  "item.ae2aquarium.void_secondary_card": "Sekundär-Vernichtungskarte",
+  "gui.ae2aquarium.aquarium_controller": "ME 3D-Aquarium-Controller"
+}

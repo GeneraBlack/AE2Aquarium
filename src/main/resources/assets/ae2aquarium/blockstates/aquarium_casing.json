@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "part=unformed": {
+      "model": "ae2aquarium:block/aquarium_casing"
+    },
+    "part=base": {
+      "model": "ae2aquarium:block/aquarium_casing_base"
+    },
+    "part=roof": {
+      "model": "ae2aquarium:block/aquarium_casing_roof"
+    },
+    "part=frame": {
+      "model": "ae2aquarium:block/aquarium_casing_frame"
+    }
+  }
+}

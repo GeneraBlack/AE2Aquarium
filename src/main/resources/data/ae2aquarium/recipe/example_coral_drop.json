@@ -1,0 +1,36 @@
+{
+  "type": "ae2aquarium:aquarium_drop",
+  "specimen": {
+    "item": "minecraft:heart_of_the_sea"
+  },
+  "min_volume": 8,
+  "drops": [
+    {
+      "item": {
+        "id": "minecraft:nautilus_shell",
+        "count": 1
+      },
+      "weight": 50,
+      "min_count": 1,
+      "max_count": 2
+    },
+    {
+      "item": {
+        "id": "minecraft:prismarine_crystals",
+        "count": 1
+      },
+      "weight": 30,
+      "min_count": 1,
+      "max_count": 3
+    },
+    {
+      "item": {
+        "id": "minecraft:wet_sponge",
+        "count": 1
+      },
+      "weight": 20,
+      "min_count": 1,
+      "max_count": 1
+    }
+  ]
+}

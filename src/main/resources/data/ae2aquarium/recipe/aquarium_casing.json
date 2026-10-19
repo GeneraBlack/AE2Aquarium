@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "P": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "F": {
+      "item": "ae2:fluix_dust"
+    }
+  },
+  "pattern": [
+    "IPI",
+    "PFP",
+    "IPI"
+  ],
+  "result": {
+    "count": 8,
+    "id": "ae2aquarium:aquarium_casing"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "ae2aquarium:block/aquarium_controller_top",
+    "bottom": "ae2aquarium:block/aquarium_controller_bottom",
+    "front": "ae2aquarium:block/aquarium_controller_front",
+    "side": "ae2aquarium:block/aquarium_controller_side"
+  }
+}

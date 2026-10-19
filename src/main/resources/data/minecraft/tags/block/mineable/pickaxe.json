@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "ae2aquarium:aquarium_controller",
+    "ae2aquarium:aquarium_casing",
+    "ae2aquarium:aquarium_glass"
+  ]
+}

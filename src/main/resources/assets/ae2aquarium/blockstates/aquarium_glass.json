@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "formed=false": {
+      "model": "ae2aquarium:block/aquarium_glass"
+    },
+    "formed=true": {
+      "model": "ae2aquarium:block/aquarium_glass"
+    }
+  }
+}
